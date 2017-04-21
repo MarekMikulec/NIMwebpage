@@ -9,27 +9,25 @@ namespace FinalProject
 {
     public partial class About : Page
     {
-        public static GameCore Game
+        public static GameCoreOnePlayer Game
         {
             get
             {
-                var Game = HttpContext.Current.Session["game"] as GameCore;
+                var Game = HttpContext.Current.Session["game1"] as GameCoreOnePlayer;
                 if (Game == null)
                 {
-                    Game = new GameCore();
-                    HttpContext.Current.Session["game"] = Game;
+                    Game = new GameCoreOnePlayer();
+                    HttpContext.Current.Session["game1"] = Game;
                 }
                 return Game;
             }
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             Image1.ImageUrl = "images/main.jpg";
-            Label1.Text = Game.InGameMatches.ToString();
-            Button2.Enabled = false;
-            DropDownList2.Enabled = false;
+            Button1.Enabled = false;
+            DropDownList1.Enabled = false;
 
         }
 
@@ -40,29 +38,15 @@ namespace FinalProject
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Boolean end = Game.Compute(DropDownList1, DropDownList2, Image1, Label1);
-            Button1.Enabled = false;
-            DropDownList1.Enabled = false;
-            Button2.Enabled = true;
-            DropDownList2.Enabled = true;
-            if (end)
-            {
-                HttpContext.Current.Session["game"] = null;
-                Response.Redirect("/Winner1.html");
-            }
         }
-        protected void Button2_Click(object sender, EventArgs e)
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Boolean end = Game.Compute(DropDownList2, DropDownList1, Image1, Label1);
+            Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex);
             Button1.Enabled = true;
             DropDownList1.Enabled = true;
-            Button2.Enabled = false;
-            DropDownList2.Enabled = false;
-            if (end)
-            {
-                HttpContext.Current.Session["game"] = null;
-                Response.Redirect("/Winner2.html");
-            }
+            DropDownListDifficulties.Enabled = false;
+            
         }
     }
 }

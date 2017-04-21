@@ -6,38 +6,48 @@ using System.Web.UI.WebControls;
 
 namespace FinalProject
 {
-    public class GameCore
+    public class GameCoreOnePlayer
     {
         private Int32 inGameMatches = 20;
         private int takeNow;
-        
+
         public int InGameMatches { get { return inGameMatches; } set { inGameMatches = value; } }
 
-     
 
-        public void RestartGame(DropDownList playersList, DropDownList oponentsList)
-        {
-            InGameMatches = 20;
-            playersList.Items.Add(new ListItem("2"));
-            playersList.Items.Add(new ListItem("3"));
-            oponentsList.Items.Add(new ListItem("2"));
-            oponentsList.Items.Add(new ListItem("3"));
+        private enum Difficulty {
+            Easy,
+            Medium,
+            Hard
+        };
+
+        private Difficulty chosenDifficulty;
+
+        public void ChooseDificulty(int i) {
+            switch (i) {
+                case 0:
+                    chosenDifficulty = Difficulty.Easy;
+                    break;
+                case 1:
+                    chosenDifficulty = Difficulty.Medium;
+                    break;
+                case 2:
+                    chosenDifficulty = Difficulty.Hard;
+                    break;
+            }
         }
-
-        internal Boolean Compute(DropDownList playersList, DropDownList oponentsList, Image image1, Label label1)
+        internal Boolean Compute(DropDownList playersList, Image image1, Label label1, DropDownList difficulty)
         {
             takeNow = playersList.SelectedIndex + 1;
             InGameMatches -= takeNow;
+            UI(difficulty);
             label1.Text = InGameMatches.ToString();
             if (InGameMatches < 3)
             {
                 playersList.Items.Remove(playersList.Items.FindByText("3"));
-                oponentsList.Items.Remove(oponentsList.Items.FindByText("3"));
             }
             if (InGameMatches < 2)
             {
                 playersList.Items.Remove(playersList.Items.FindByText("2"));
-                oponentsList.Items.Remove(oponentsList.Items.FindByText("2"));
             }
 
             if (inGameMatches < 1)
@@ -46,9 +56,13 @@ namespace FinalProject
             }
 
             return false;
-
         }
 
-        
+        private Boolean UI(DropDownList difficulty)
+        {
+
+            return false;
+        }
+
     }
 }

@@ -195,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="GameCoreOnePlayer.cs" />
     <Compile Include="GameOnePlayer.aspx.cs">
       <DependentUpon>GameOnePlayer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

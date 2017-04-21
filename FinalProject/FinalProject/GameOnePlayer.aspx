@@ -2,27 +2,25 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
-        <h3 style="text-align: center;">"Vyberte si, kolik zápalek chcete odebrat."</h3>
-        <div class="row">
-            <div class="col-md-3">
-                    <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Style="padding-left: 5px; padding-right: 20px; padding-bottom: 5px; padding-top: 3px; font-size: 19px; margin: 5px; border-radius: 2px;">
-                        <asp:ListItem>1</asp:ListItem>
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:Button ID="Button1" runat="server" Text="Táhnout" OnClick="Button1_Click" CssClass="btn btn-primary btn-lg" />
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3">
-                <asp:Button ID="Button2" runat="server" Text="Táhnout" OnClick="Button2_Click" CssClass="btn btn-primary btn-lg" />
-                <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Style="padding-left: 5px; padding-right: 20px; padding-bottom: 5px; padding-top: 3px; font-size: 19px; margin: 5px; border-radius: 2px;">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                </asp:DropDownList>
-            </div>
+        
+        <h3 style="text-align: center;">Vyberte si obtížnost hry: 
+            <asp:DropDownList ID="DropDownListDifficulties" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" Style="padding-left: 5px; padding-right: 20px; padding-bottom: 5px; padding-top: 3px; font-size: 19px; margin: 5px; border-radius: 2px;">
+                <asp:ListItem>Lehká</asp:ListItem>
+                <asp:ListItem>Střední</asp:ListItem>
+                <asp:ListItem>Těžká</asp:ListItem>
+            </asp:DropDownList>
+        </h3>
+        <h3 style="text-align: center;">Vyberte si, kolik zápalek chcete odebrat.</h3>
+
+        <div style="text-align: center">
+            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Style="padding-left: 5px; padding-right: 20px; padding-bottom: 5px; padding-top: 3px; font-size: 19px; margin: 5px; border-radius: 2px;">
+                <asp:ListItem>1</asp:ListItem>
+                <asp:ListItem>2</asp:ListItem>
+                <asp:ListItem>3</asp:ListItem>
+            </asp:DropDownList>
+            <asp:Button ID="Button1" runat="server" Text="Táhnout" OnClick="Button1_Click" CssClass="btn btn-primary btn-lg" />
         </div>
+
         <div style="text-align: center;">
             Ve hře zbývá 
         <asp:Label ID="Label1" runat="server" Text="" Font-Bold="true"></asp:Label>
