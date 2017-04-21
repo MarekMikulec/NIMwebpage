@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Game" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Game.aspx.cs" Inherits="FinalProject.Contact" %>
-
+﻿<%@ Page Title="Game One Player" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameOnePlayer.aspx.cs" Inherits="FinalProject.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
@@ -36,5 +35,4 @@
     </div>
 
 </asp:Content>
-
 

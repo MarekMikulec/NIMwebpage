@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FinalProject
 {
-    public partial class Contact : Page
+    public partial class About : Page
     {
         public static GameCore Game
         {
@@ -64,6 +64,5 @@ namespace FinalProject
                 Response.Redirect("/Winner2.html");
             }
         }
-
     }
 }
