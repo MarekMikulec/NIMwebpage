@@ -26,7 +26,7 @@ namespace FinalProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Image1.ImageUrl = "images/main.jpg";
+            Image1.ImageUrl = "images/" + Game.InGameMatches.ToString() + ".jpg";
             Label1.Text = Game.InGameMatches.ToString();
             Button2.Enabled = false;
             DropDownList2.Enabled = false;

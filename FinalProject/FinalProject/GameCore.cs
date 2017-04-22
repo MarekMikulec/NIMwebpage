@@ -29,6 +29,7 @@ namespace FinalProject
             takeNow = playersList.SelectedIndex + 1;
             InGameMatches -= takeNow;
             label1.Text = InGameMatches.ToString();
+            image1.ImageUrl = "images/" + InGameMatches.ToString() + ".jpg"; 
             if (InGameMatches < 3)
             {
                 playersList.Items.Remove(playersList.Items.FindByText("3"));
