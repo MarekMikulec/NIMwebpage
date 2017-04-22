@@ -23,11 +23,29 @@ namespace FinalProject
             }
         }
 
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Image1.ImageUrl = "images/main.jpg";
-            Button1.Enabled = false;
-            DropDownList1.Enabled = false;
+            Image1.ImageUrl = "images/" + Game.InGameMatches.ToString() + ".jpg";
+            Label1.Text = Game.InGameMatches.ToString();
+
+            /*Takto zadefinovaným zajistíme, že se tlačítka zablokují jen při prvním načtení.
+             * Zablokují se tedy jen při prvním načtení, kdy ještě není vybraná obtížnost.
+             * Pak už budou normálně otevřené.
+            */
+            if (!IsPostBack && Session["IsAlreadyLoad"] == null)
+            {
+                Button1.Enabled = false;
+                DropDownList1.Enabled = false;
+                Session["IsAlreadyLoad"] = true;
+            }
+            else {
+                Button2.Visible = false;
+                Label2.Visible = false;
+                DropDownListDifficulties.Visible = false;
+            }
+
 
         }
 
@@ -38,15 +56,25 @@ namespace FinalProject
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Game.Compute(DropDownList1, Image1, Label1, Label3);
         }
 
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*Z nějakého důvodu tady celí ten kód nikdy neproběhne nevím proč. Proto jsem vytvořil ještě to tlačítko Button2*/
             Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex);
             Button1.Enabled = true;
             DropDownList1.Enabled = true;
-            DropDownListDifficulties.Enabled = false;
-            
+            DropDownListDifficulties.Visible = false;
+            Button2.Visible = false;
+            Label2.Visible = false;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex);
+            Button1.Enabled = true;
+            DropDownList1.Enabled = true;
         }
     }
 }

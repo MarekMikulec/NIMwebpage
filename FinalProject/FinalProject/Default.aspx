@@ -45,6 +45,9 @@
             </div>
 
         </div>
+        <h1 style="text-align:center">Pravidla hry</h1>
+        Ve hře je 20 sirek. Hráč má možnost táhnout 1, 2 nebo 3 sirky. Vyhrává ten hráč, který táhné jako poslední.
+        Jinými slovy prohrává ten hráč, na kterého už nezbydou žádné sirky.
     </div>
     <div>
         <asp:Image ID="ImageMain" runat="server" Style="width: 100%; height: 100%;" />

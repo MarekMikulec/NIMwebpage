@@ -10,9 +10,11 @@ namespace FinalProject
     {
         private Int32 inGameMatches = 20;
         private int takeNow;
+        private Int32 UItakes = 0;
 
         public int InGameMatches { get { return inGameMatches; } set { inGameMatches = value; } }
 
+        public int UItakes1 { get { return UItakes; } set { UItakes = value; } }
 
         private enum Difficulty {
             Easy,
@@ -20,7 +22,7 @@ namespace FinalProject
             Hard
         };
 
-        private Difficulty chosenDifficulty;
+        private Difficulty chosenDifficulty = Difficulty.Easy;
 
         public void ChooseDificulty(int i) {
             switch (i) {
@@ -34,12 +36,34 @@ namespace FinalProject
                     chosenDifficulty = Difficulty.Hard;
                     break;
             }
+            return;
         }
-        internal Boolean Compute(DropDownList playersList, Image image1, Label label1, DropDownList difficulty)
+        internal Boolean Compute(DropDownList playersList, Image image1, Label label1, Label label3)
         {
             takeNow = playersList.SelectedIndex + 1;
             InGameMatches -= takeNow;
-            UI(difficulty);
+            if(inGameMatches.Equals(0))
+            {
+                PlayerWins();
+            }
+            switch (chosenDifficulty) {
+                case Difficulty.Easy:
+                    EasyUI();
+                    break;
+                case Difficulty.Medium:
+                    MediumUI();
+                    break;
+                case Difficulty.Hard:
+                    HardUI();
+                    break;
+            }
+            label3.Text = UItakes.ToString();
+            inGameMatches -= UItakes;
+            if (inGameMatches.Equals(0))
+            {
+                UIWins();
+            }
+            image1.ImageUrl = "images/" + InGameMatches.ToString() + ".jpg";
             label1.Text = InGameMatches.ToString();
             if (InGameMatches < 3)
             {
@@ -58,11 +82,45 @@ namespace FinalProject
             return false;
         }
 
-        private Boolean UI(DropDownList difficulty)
+        private void UIWins()
         {
-
-            return false;
+            //throw new NotImplementedException();
         }
 
+        private void PlayerWins()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void HardUI()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void MediumUI()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void EasyUI()
+        {
+            switch (inGameMatches) {
+                case 1:
+                    UItakes = 1;
+                    break;
+                case 2:
+                    UItakes = 2;
+                    break;
+                case 3:
+                    UItakes = 3;
+                    break;
+                default:
+                    Random rn = new Random();
+                    UItakes = rn.Next(3) + 1;
+                    break;
+            }
+            
+
+        }
     }
 }
