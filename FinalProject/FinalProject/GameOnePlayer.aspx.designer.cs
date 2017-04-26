@@ -10,7 +10,7 @@
 namespace FinalProject {
     
     
-    public partial class About {
+    public partial class GameOnePlayePage {
         
         /// <summary>
         /// ovládací prvek Label4.

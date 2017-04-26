@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Game One Player" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameOnePlayer.aspx.cs" Inherits="FinalProject.About" %>
+﻿<%@ Page Title="Game One Player" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameOnePlayerPage.aspx.cs" Inherits="GameOnePlayePage" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">

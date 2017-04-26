@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FinalProject
 {
-    public partial class About : Page
+    public partial class GameOnePlayePage : Page
     {
         public static GameCoreOnePlayer Game
         {

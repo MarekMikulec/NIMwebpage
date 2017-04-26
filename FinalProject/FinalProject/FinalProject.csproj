@@ -175,6 +175,7 @@
     <Content Include="images\Sad.png" />
     <Content Include="images\Winner.jpg" />
     <Content Include="Winner.aspx" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\main.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -214,8 +215,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="GameCoreOnePlayer.cs" />
-    <Compile Include="GameOnePlayer.aspx.cs">
-      <DependentUpon>GameOnePlayer.aspx</DependentUpon>
+    <Compile Include="GameOnePlayerPage.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GameOnePlayer.aspx.designer.cs">
@@ -223,10 +223,6 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Game.aspx.cs">
-      <DependentUpon>Game.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Game.aspx.designer.cs">
       <DependentUpon>Game.aspx</DependentUpon>
     </Compile>
@@ -238,6 +234,9 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="GameCore.cs" />
+    <Compile Include="GamePage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
