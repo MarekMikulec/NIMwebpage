@@ -10,13 +10,14 @@ namespace FinalProject
     {
         private Int32 inGameMatches = 20;
         private int takeNow;
-        private Int32 UItakes = 0;
+        private Int32 _UItakes = 0;
 
         public int InGameMatches { get { return inGameMatches; } set { inGameMatches = value; } }
 
-        public int UItakes1 { get { return UItakes; } set { UItakes = value; } }
+        public int UItakes { get { return _UItakes; } set { _UItakes = value; } }
 
-        private enum Difficulty {
+        private enum Difficulty
+        {
             Easy,
             Medium,
             Hard
@@ -24,29 +25,39 @@ namespace FinalProject
 
         private Difficulty chosenDifficulty = Difficulty.Easy;
 
-        public void ChooseDificulty(int i) {
-            switch (i) {
+        public void ChooseDificulty(int i, Label l)
+        {
+            switch (i)
+            {
                 case 0:
                     chosenDifficulty = Difficulty.Easy;
+                    l.Text = "Hra jednoho hráče - lehká obtížnost";
                     break;
                 case 1:
                     chosenDifficulty = Difficulty.Medium;
+                    l.Text = "Hra jednoho hráče - střední obtížnost";
                     break;
                 case 2:
+                    l.Text = "Hra jednoho hráče - těžká obtížnost";
                     chosenDifficulty = Difficulty.Hard;
                     break;
             }
             return;
         }
-        internal Boolean Compute(DropDownList playersList, Image image1, Label label1, Label label3)
+        internal void Compute(DropDownList playersList, Image image1, Label label1, Label label3)
         {
             takeNow = playersList.SelectedIndex + 1;
             InGameMatches -= takeNow;
-            if(inGameMatches.Equals(0))
+            if (inGameMatches <= 0)
             {
                 PlayerWins();
             }
-            switch (chosenDifficulty) {
+            if (inGameMatches.Equals(0))
+            {
+                PlayerWins();
+            }
+            switch (chosenDifficulty)
+            {
                 case Difficulty.Easy:
                     EasyUI();
                     break;
@@ -59,7 +70,7 @@ namespace FinalProject
             }
             label3.Text = UItakes.ToString();
             inGameMatches -= UItakes;
-            if (inGameMatches.Equals(0))
+            if (inGameMatches <= 0)
             {
                 UIWins();
             }
@@ -73,38 +84,78 @@ namespace FinalProject
             {
                 playersList.Items.Remove(playersList.Items.FindByText("2"));
             }
-
-            if (inGameMatches < 1)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         private void UIWins()
         {
-            //throw new NotImplementedException();
+            System.Web.HttpContext.Current.Session["IsAlreadyLoad"] = null;
+            Winner.Text = "Prohrál jste! Zkuste to znovu.";
+            HttpContext.Current.Session["game1"] = null;
+            Winner.Loser1 = true;
+            System.Web.HttpContext.Current.Response.Redirect("/Winner");
         }
 
         private void PlayerWins()
         {
-            //throw new NotImplementedException();
+            System.Web.HttpContext.Current.Session["IsAlreadyLoad"] = null;
+            Winner.Text = "Zvítězil jste! Gratulujeme.";
+            HttpContext.Current.Session["game1"] = null;
+            System.Web.HttpContext.Current.Response.Redirect("/Winner");
         }
 
         private void HardUI()
         {
-            //throw new NotImplementedException();
+            //touto podmínkou dáváme šanci vyhrát nad Hard, když by tady nebyla, vždy vyhraje UI
+            if (inGameMatches >= 16)
+            {
+                Random rn = new Random();
+                UItakes = rn.Next(3) + 1;
+            }
+            else
+            {
+                UItakes = inGameMatches % 4;
+            }
+            if (UItakes == 0)
+            {
+                Random rn = new Random();
+                UItakes = rn.Next(3) + 1;
+                //throw new Exception("Algorithm error");
+            }
         }
 
         private void MediumUI()
         {
-            //throw new NotImplementedException();
+            switch (inGameMatches)
+            {
+                case 1:
+                    UItakes = 1;
+                    break;
+                case 2:
+                    UItakes = 2;
+                    break;
+                case 3:
+                    UItakes = 3;
+                    break;
+                case 5:
+                    UItakes = 1;
+                    break;
+                case 6:
+                    UItakes = 2;
+                    break;
+                case 7:
+                    UItakes = 3;
+                    break;
+                default:
+                    Random rn = new Random();
+                    UItakes = rn.Next(3) + 1;
+                    break;
+            }
         }
 
         private void EasyUI()
         {
-            switch (inGameMatches) {
+            switch (inGameMatches)
+            {
                 case 1:
                     UItakes = 1;
                     break;
@@ -119,8 +170,6 @@ namespace FinalProject
                     UItakes = rn.Next(3) + 1;
                     break;
             }
-            
-
         }
     }
 }

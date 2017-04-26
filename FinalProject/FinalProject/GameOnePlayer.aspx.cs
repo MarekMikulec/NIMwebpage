@@ -36,9 +36,13 @@ namespace FinalProject
             */
             if (!IsPostBack && Session["IsAlreadyLoad"] == null)
             {
+                Button2.Visible = true;
+                Label2.Visible = true;
+                DropDownListDifficulties.Visible = true;
                 Button1.Enabled = false;
                 DropDownList1.Enabled = false;
                 Session["IsAlreadyLoad"] = true;
+
             }
             else {
                 Button2.Visible = false;
@@ -62,17 +66,15 @@ namespace FinalProject
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*Z nějakého důvodu tady celí ten kód nikdy neproběhne nevím proč. Proto jsem vytvořil ještě to tlačítko Button2*/
-            Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex);
+            Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex, Label4);
             Button1.Enabled = true;
             DropDownList1.Enabled = true;
-            DropDownListDifficulties.Visible = false;
-            Button2.Visible = false;
-            Label2.Visible = false;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex);
+            
+            Game.ChooseDificulty(DropDownListDifficulties.SelectedIndex,Label4);
             Button1.Enabled = true;
             DropDownList1.Enabled = true;
         }

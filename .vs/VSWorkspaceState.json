@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\FinalProject",
-    "\\FinalProject\\FinalProject"
+    "\\FinalProject\\FinalProject",
+    "\\FinalProject\\FinalProject\\images"
   ],
-  "SelectedNode": "\\FinalProject\\FinalProject.sln",
+  "SelectedNode": "\\FinalProject\\FinalProject\\FinalProject.csproj",
   "PreviewInSolutionExplorer": false
 }

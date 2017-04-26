@@ -172,9 +172,9 @@
     <Content Include="images\7.jpg" />
     <Content Include="images\8.jpg" />
     <Content Include="images\9.jpg" />
+    <Content Include="images\Sad.png" />
     <Content Include="images\Winner.jpg" />
-    <Content Include="Winner1.html" />
-    <Content Include="Winner2.html" />
+    <Content Include="Winner.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\main.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -262,6 +262,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Winner.aspx.cs">
+      <DependentUpon>Winner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Winner.aspx.designer.cs">
+      <DependentUpon>Winner.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

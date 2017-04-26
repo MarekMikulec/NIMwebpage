@@ -48,7 +48,8 @@ namespace FinalProject
             if (end)
             {
                 HttpContext.Current.Session["game"] = null;
-                Response.Redirect("/Winner1.html");
+                Winner.Text = "Vyhrál hráč 1. Gratulujeme!";
+                Response.Redirect("/Winner");
             }
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -61,7 +62,8 @@ namespace FinalProject
             if (end)
             {
                 HttpContext.Current.Session["game"] = null;
-                Response.Redirect("/Winner2.html");
+                Winner.Text = "Vyhrál hráč 2. Gratulujeme!";
+                Response.Redirect("/Winner");
             }
         }
 
